@@ -1,0 +1,60 @@
+<mat-toolbar color="warn">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()">
+  <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+ <a routerLink="/home" style="text-decoration: none;color: white;"> <span>ViewTube</span> </a>
+  <span>
+    <form class="form">
+      <mat-form-field style="color:white" class="example-full-width" appearance="fill">
+        <mat-label>search</mat-label>
+        <input matInput >
+      </mat-form-field>
+      <mat-icon>search</mat-icon>
+      <mat-icon  matTooltip="Audio search">keyboard_voice</mat-icon>
+      <span id="topicons">
+     <mat-icon matTooltip="notifications">notifications</mat-icon>
+     <a routerLink="/studio-upload"><mat-icon matTooltip="create a video">video_call</mat-icon></a>
+      <mat-icon matTooltip="apps">apps</mat-icon>
+     <mat-icon matTooltip="manage profile" [matMenuTriggerFor]="menu" style="width: fit-content;">person</mat-icon>
+        <mat-menu #menu="matMenu" role="menu">
+          <div class="menus"><mat-icon>settings</mat-icon>settings</div>
+          <div class="menus"><mat-icon>help</mat-icon>Help</div>
+          <div class="menus"><mat-icon>notifications_off</mat-icon>Disable alerts</div>
+          <div class="menus" disable><mat-icon>feed</mat-icon>Send FeedBack</div>
+        </mat-menu>
+      </span>
+    </form>
+  </span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-toolbar></mat-toolbar>
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'push' : 'side'" 
+        [opened]="false">
+     
+      <mat-nav-list>
+        <a style="color:white" mat-list-item href="#"><mat-icon>home</mat-icon>Home</a>
+        <a style="color:white" mat-list-item href="#"><mat-icon>explore</mat-icon>Explore</a>
+        <a style="color:white" mat-list-item href="#"><mat-icon>subscriptions</mat-icon>Subscription</a>
+        <a style="color:white" mat-list-item href="#"><mat-icon>video_library</mat-icon>Library</a>
+        <a style="color:white" mat-list-item href="#"><mat-icon>history</mat-icon>History</a>
+      </mat-nav-list>
+      <hr style="margin-right: 20px;color: white;">
+      <p style="color:white ;margin:20px;"> Sign in to like videos,comment and subscribe</p>
+      <a routerLink="/authenticate" class="signin">SIGN IN</a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-chips-bar></app-chips-bar>
+      <!-- <app-video-content></app-video-content> -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  
+  

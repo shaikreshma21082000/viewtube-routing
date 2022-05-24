@@ -1,0 +1,28 @@
+<form #registerForm="ngForm">
+    <h1 style="text-align: center;font-size: xx-larger;color: white;">LOGIN</h1>
+    <div class="form-group">
+        <div>
+           <label class="form-label">Username</label>
+           <input type="text" class="form-control" aria-describedby="url" [(ngModel)]="formsData.username" name="username" #username="ngModel" placeholder="start with '@'"  required >
+        </div>
+      </div>
+    <div *ngIf="username.invalid && (username.dirty ||username.touched)" class="alert alert-danger" >
+            username is required/Please enter valid username
+    </div> 
+    <div class="form-group">
+        <div>
+           <label class="form-label">password</label>
+           <input type="password" class="form-control" #code aria-describedby="password" [(ngModel)]="formsData.password" name="password" #password="ngModel"   required >
+        </div>
+    </div>
+    <div *ngIf="password.invalid && (password.dirty ||password.touched)" class="alert alert-danger" >
+        password is required
+    </div>  
+    <!-- <div class="form-group">
+        <button [disabled]="registerForm.invalid" (click)="login(formsData.username)" type="submit" class="btn btn-danger">Submit</button>
+</div>   -->
+<div class="form-group">
+    <a class="btn btn-outline-danger" routerLink="/authenticate/register" type="submit" >Register</a>
+    <a class="btn btn-outline-danger"  routerLink="/studio-upload" (click)="login()" type="submit" >Login</a>
+</div>           
+</form>

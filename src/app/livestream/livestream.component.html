@@ -1,0 +1,73 @@
+<form  [formGroup]="livestream" (ngSubmit)="onSubmit()">
+    <h1>Details Of Event</h1>
+    <div class="form-group">
+        <label for="title">Event Title </label>
+        <input type="text" class="form-control" formControlName="title" aria-describedby="Event Title"  placeholder="title of event">
+    </div>
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        <div *ngIf="title.errors?.['required']" >
+            Title is required.
+        </div>
+        <div *ngIf="title.errors?.['maxlength']">
+            Title should not exceed 100 charecters
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="startDateAndStartTime">Start Date And Time </label>
+        <input type="datetime-local" class="form-control" formControlName="startDateAndStartTime" aria-describedby="Event start Date and Time" placeholder="Start Date and Time">
+    </div>
+    <div *ngIf="startDateAndStartTime.invalid && (startDateAndStartTime.dirty || startDateAndStartTime.touched)" class="alert alert-danger">
+        <div *ngIf="startDateAndStartTime.errors?.['required']">
+            Start Date and Time is required.
+        </div>  
+        <div *ngIf="startDateAndStartTime.errors?.['data'] && startDateAndStartTime.dirty" >
+            Start Date and Time should be greater than or equal to current date.
+        </div>  
+    </div>
+    
+    <div class="form-group">
+        <label for="endDateandTime">End Date And Time</label>
+        <input type="datetime-local" class="form-control" formControlName="endDateandTime" aria-describedby="Event End Date" placeholder="End Date">
+ 
+    <div *ngIf="endDateandTime.invalid && (endDateandTime.dirty ||endDateandTime.touched)" class="alert alert-danger">
+        <div *ngIf="endDateandTime.errors?.['required']">
+           End Date and Time is required
+        </div>
+        <div *ngIf="endDateandTime.errors?.['data'] && endDateandTime.dirty">
+            End Date and Time should be greater than or equal to Start date.
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="eventDetails">Event Details </label>
+        <input type="textarea" class="form-control" formControlName="eventDetails" aria-describedby="Event Details" placeholder="details of event">
+    </div> 
+    <div class="form-group">
+      <label for="tags" class="form-label" >Tags</label><br>
+        <mat-form-field appearance="outline" style="width: 650px;">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let tag of taglist" [selectable]="selectable"
+                       [removable]="removable" (removed)="remove(tag)">
+                {{tag.tags}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Tags.."
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event)"
+                    class="form-control" name="taglist" formControlName="formsData.taglist">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+        <!-- <div *ngIf="taglist.errors?.['err'] && endDateandTime.dirty">
+            End Date and Time should be greater than or equal to Start date.
+        </div> -->
+   
+    <div class="form-group">
+      <button type="submit" [disabled]="!livestream.valid">SUBMIT</button>   
+    </div> 
+</form>
+

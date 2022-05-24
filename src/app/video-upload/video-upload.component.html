@@ -1,0 +1,162 @@
+<!-- USING BOOTSRAP -->
+<div class="container">
+    <form #registerForm="ngForm">
+        <h1>Video Upload</h1>
+        <div class="form-group">
+          <div>
+             <label class="form-label">Video Url</label>
+             <input appValidateUrl type="text" class="form-control" aria-describedby="url" [(ngModel)]="formsData.url" name="url" #url="ngModel"   required >
+          </div>
+        </div>
+           <div *ngIf="url.invalid && (url.dirty ||url.touched)" class="alert alert-danger" >
+            Url is required/Please enter valid url
+           </div>
+        <div class="form-group">
+            <div class="mb-3">
+                <label class="form-label">Video Title</label>
+                <input type="text" class="form-control" maxlength="120" aria-describedby="video title" [(ngModel)]="formsData.title" name="title" #title="ngModel" required>
+            </div>
+            <div *ngIf="title.invalid && (title.dirty ||title.touched)" class="alert alert-danger" >
+                  Video Title is required
+            </div>
+        </div>
+         
+        <div class="form-group">
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea type="text" class="form-control" aria-describedby="description"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+              <label class="form-label">Video Duration</label>
+              <input type="time" class="form-control" aria-describedby="video description" [(ngModel)]="formsData.duration" name="duration" #duration="ngModel" required>
+              <div *ngIf="duration.invalid && (duration.dirty ||duration.touched)" class="alert alert-danger">
+               Duration is required
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Channel Tittle</label>
+            <input type="text" class="form-control" aria-describedby="channel title" [(ngModel)]="formsData.channelTitle" name="channelTitle" #channelTitle="ngModel" required>
+            <div *ngIf="channelTitle.invalid && (channelTitle.dirty ||channelTitle.touched)" class="alert alert-danger">
+              Channel Title is required
+              </div>
+          </div>
+
+        <div class="form-group" >
+            <label class="form-label">Audience Type</label>
+          <div class="check" style="margin-top:10px;">
+            <input class="form-check-input" type="radio" name="flexRadioDefault">
+            <label class="form-check-label"> Yes,its made for Kids</label>
+          </div>
+          <div class="check" style="margin-top:10px;">
+              <input class="form-check-input" type="radio" name="flexRadioDefault">
+              <label class="form-check-label">Not for kids</label>
+           </div>
+        </div>
+
+        <div class="form-group">
+               <label class="form-label"> Age Restriction</label>
+              <div class="check" style="margin-top:10px;">
+               <input class="form-check-input" type="radio" name="flexRadioDefault1">
+               <label class="form-check-label">
+                Yes, Restrict my videos to viewers over 18
+            </label>
+           </div>
+           <div class="check" style="margin-top:10px;" >
+            <input class="form-check-input" type="radio" name="flexRadioDefault1">
+            <label class="form-check-label">
+                No, don't restrict my videos to viewers over 18
+            </label>
+           </div>
+         </div> 
+
+    <div class="form-group">
+      <br><label for="tags" class="form-label" >Tags</label><br>
+      <mat-form-field appearance="outline" style="width: 650px;">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of taglist" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(tag)">
+              {{tag.tags}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Tags.."
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)"
+                  class="form-control" name="taglist" [(ngModel)]="formsData.taglist">
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+
+         <div class="form-group">
+              <label class="form-label">Recording Date</label>
+              <input type="date" class="form-control" aria-describedby="channel title" [(ngModel)]="formsData.date" name="date" #date="ngModel" required>
+          </div>
+
+        <div class="form-group"> 
+            <label for="location">Video Location</label>
+            <select id="location">
+              <option  value="">Choose</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Kerala">Kerala</option>
+              <option value="uttar pradesh">uttar pradesh</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="License">License</label>
+            <select id="License">
+              <option  value="">Choose</option>
+              <option value="Standard Viewtube License">Standard Viewtube License</option>
+              <option value="Creative Common License">Creative Common License</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+              <label for="Distribution">Distribution</label>
+            <select id="Distribution">
+              <option  value="">Choose</option>
+              <option value="Everywhere">Everywhere</option>
+              <option value="Make this video available only on monetized platforms">Make this video available only on monetized platforms</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Video Category">Video Category</label>
+            <select id="Video Category">
+              <option  value="">Choose</option>
+              <option value="Film & Animation">Film & Animation</option>
+              <option value="Autos & Vehicles">Autos & Vehicles</option>
+              <option value="Music">Music</option>
+              <option value="Pets & Animals">Pets & Animals</option>
+              <option value="Sports">Sports</option>
+              <option value="Travel & Events">Travel & Events</option>
+              <option value="Gaming">Gaming</option>
+              <option value="People & Blogs">People & Blogs</option>
+              <option value="News & Politics">News & Politics</option>
+              <option value="Howto & Style">Howto & Style</option>
+              <option value="Education">Education</option>
+              <option value="Science & Technology">Science & Technology</option>
+              <option value="Nonprofits & Activism">Nonprofits & Activism</option>
+            </select>
+        </div>
+        <div class="form-group">
+              <label for="Visibility">Visibility</label>
+              <select id="Visibility" required>
+                <option  value="">Choose</option>
+                <option value="public">public</option>
+                <option value="private">private</option>
+              </select>
+        </div>
+        <div class="form-group">
+              <button [disabled]="registerForm.invalid" (click)="submit()" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+</div>
+
+
+

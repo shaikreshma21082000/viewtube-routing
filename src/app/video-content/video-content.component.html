@@ -1,0 +1,23 @@
+<!-- <mat-card *ngFor="let card of video">
+    <a routerLink="selected-video/{{card.id}}"><img mat-card-image [src]=card.snippet.thumbnails.default.url/>
+    <span class="timestamp">{{card.contentDetails.length}}</span>
+    <mat-card-title>{{card.snippet.title}}</mat-card-title>  
+    <mat-card-subtitle>{{card.snippet.channelTitle}}</mat-card-subtitle>
+    <mat-card-footer><p>{{card.statistics.viewCount}} views.</p><p>{{card.snippet.relativeTime}}</p></mat-card-footer></a>
+</mat-card> -->
+<div style="display:flex">
+    <div [class.view-image-list]="viewOutlet.isActivated">
+        <mat-card *ngFor="let card of video">
+            <a routerLink="selected-video/{{card.id}}">
+                <img mat-card-image [src]=card.snippet.thumbnails.default.url/>
+                <span class="timestamp">{{card.contentDetails.length}}</span>
+                <mat-card-title style="font-size: medium; ">{{card.snippet.title}}</mat-card-title>  
+                <mat-card-subtitle style="padding-top:20px;font-weight:500;color: white;">{{card.snippet.channelTitle}}</mat-card-subtitle>
+                <mat-card-footer style="padding-left:20px;"><p style="float: left;margin-right:20px">{{card.statistics.viewCount}} views.</p><p>{{card.snippet.relativeTime}}</p></mat-card-footer>  
+            </a>
+        </mat-card>
+    </div>
+    <div [class.view-large-image]="viewOutlet.isActivated" >
+        <router-outlet #viewOutlet="outlet"> </router-outlet>
+    </div>
+</div>

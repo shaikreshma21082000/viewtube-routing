@@ -1,0 +1,66 @@
+.sidenav-container {
+    /* height: 100%; */
+    height:auto;
+  }
+  
+  .sidenav {
+    width: 200px;
+    background-color:rgb(44, 42, 42) ;
+    position: absolute;
+    
+  }
+  a>mat-icon{
+    color: white;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  mat-icon{
+    margin:5px;
+    width:30px;
+    transform: scale(1.2);
+  }
+  #topicons{
+    margin-left: 350px;
+    
+  }
+  
+  form{
+    margin-left: 500px;
+  }
+  app-chips-bar{
+    background-color: black;
+  }
+  mat-sidenav-container{
+    background-color: rgb(44, 42, 42);
+  }
+  
+  .menus{
+   width:200px;
+   padding-left: 40px;
+   color: white;
+   background-color:  rgb(44, 42, 42);
+   margin:0px;
+  
+  }
+  .signin{
+    color:white;
+    margin: 50px;
+    font-size:medium;
+    border: 2px solid red;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px;
+    margin-top:30px
+  }
+  .signin:hover{
+    background-color: red;
+    color:white
+  }

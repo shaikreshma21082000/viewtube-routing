@@ -1,0 +1,35 @@
+form{
+    margin: 100px 500px;
+    border: 2px solid black;
+    border-radius:20px;
+    padding:50px;
+
+}
+h1{
+    text-align: center;
+    font-weight:500;
+    color:white;
+}
+label{
+    font-size: larger;
+    margin: 5px;
+    color:white;
+}
+input:hover{
+ background-color:black;
+ color:white;
+}
+button{
+    margin-top:30px;
+    background-color: black;
+    color: white;
+    width:100px;
+    height:50px;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-left:150px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
